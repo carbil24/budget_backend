@@ -9,10 +9,7 @@ export const createGroup = async (req, res) => {
 
   const newGroup = new Group({ name });
 
-  const member = await Member.create({
-    email: currentUser.email,
-    name: `${currentUser.firstName} ${currentUser.lastName}`,
-  });
+  const member = await Member.findOne({ email: savedUser.email });
 
   newGroup.members = members.length + 1;
   newGroup.createdBy = currentUser._id;

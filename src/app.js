@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import pkg from "../package.json";
 import { createRules } from "./libs/initialSetup";
 import authRoutes from "./routes/auth.routes";
@@ -14,6 +15,7 @@ app.set("pkg", pkg);
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 
 app.get("/api", (req, res) => {
   res.json({
